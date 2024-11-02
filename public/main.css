@@ -1,0 +1,113 @@
+/*const apiUrl = 'http://localhost:3000/base_de_datos';
+
+document.addEventListener('DOMContentLoaded', () => {
+    obtenerUsuarios();
+
+    document.getElementById('formularioUsuarios').addEventListener('submit', event => {
+        event.preventDefault();
+        agregarUsuario();
+    });
+});
+
+// Función para obtener todos los usuarios
+async function obtenerUsuarios() {
+    try {
+        const response = await fetch(apiUrl);
+        const usuarios = await response.json();
+        mostrarUsuarios(usuarios);
+    } catch (error) {
+        console.error('Error obteniendo los usuarios:', error);
+    }
+}
+
+// Función para mostrar los usuarios en la página
+function mostrarUsuarios(usuarios) {
+    const listaUsuarios = document.getElementById('usuariosTbody');
+    listaUsuarios.innerHTML = '';
+
+    usuarios.forEach(usuario => { // Cambié "usuarios" a "usuario"
+        const filaUsuario = document.createElement('tr');
+        filaUsuario.innerHTML = ` // Cambié "filaLibro" a "filaUsuario"
+            <td>${usuario.nombre}</td>
+            <td>${usuario.email}</td>
+            <td>${usuario.contraseña}</td>
+            <td>${usuario.fecha_registro}</td>
+            <td class="action-buttons">
+                <button class="edit-btn" onclick="editarUsuario(${usuario.id}, '${usuario.nombre}', '${usuario.email}', '${usuario.contraseña}', '${usuario.fecha_registro}')">Editar</button>
+                <button class="delete-btn" onclick="eliminarUsuario(${usuario.id})">Eliminar</button> // Cambié "libro.id" a "usuario.id"
+            </td>
+        `;
+        listaUsuarios.appendChild(filaUsuario);
+    });
+}
+
+// Función para agregar un usuario
+async function agregarUsuario() {
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const contraseña = document.getElementById('contraseña').value;
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, email, contraseña })
+        });
+        if (response.ok) {
+            obtenerUsuarios();
+            resetearFormulario();
+        }
+    } catch (error) {
+        console.error('Error agregando usuario:', error);
+    }
+}
+
+// Función para eliminar un usuario
+async function eliminarUsuario(id) {
+    try {
+        await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+        obtenerUsuarios();
+    } catch (error) {
+        console.error('Error eliminando el usuario:', error);
+    }
+}
+
+// Función para editar un usuario
+function editarUsuario(id, nombre, email, contraseña, fecha_registro) { // Cambié "editarusuario" a "editarUsuario"
+    document.getElementById('nombre').value = nombre;
+    document.getElementById('email').value = email;
+    document.getElementById('contraseña').value = contraseña;
+
+    const botonEnvio = document.querySelector('#formularioUsuarios button'); // Cambié "formularioUsuario" a "formularioUsuarios"
+    botonEnvio.textContent = 'Actualizar Usuario';
+    botonEnvio.onclick = async (event) => {
+        event.preventDefault();
+        try {
+            await fetch(`${apiUrl}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    nombre: document.getElementById('nombre').value,
+                    email: document.getElementById('email').value,
+                    contraseña: document.getElementById('contraseña').value
+                })
+            });
+            obtenerUsuarios();
+            resetearFormulario();
+        } catch (error) {
+            console.error('Error actualizando el usuario:', error);
+        }
+    };
+}
+
+// Función para resetear el formulario y el botón
+function resetearFormulario() {
+    document.getElementById('formularioUsuarios').reset(); // Cambié "formularioUsuario" a "formularioUsuarios"
+    const botonEnvio = document.querySelector('#formularioUsuarios button'); // Cambié "formularioUsuario" a "formularioUsuarios"
+    botonEnvio.textContent = 'Agregar Usuario';
+    botonEnvio.onclick = (event) => {
+        event.preventDefault();
+        agregarUsuario();
+    };
+}
+*/
